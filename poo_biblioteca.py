@@ -1,64 +1,46 @@
 class Libro:
-    #Constructor del objeto
-    def __init__(self, _id, _titulo, _autor, _cantidadDisponible, _activo): 
-        self.id = _id 
-        self.titulo = _titulo 
-        self.autor = _autor 
-        self.cantidadDisponible = _cantidadDisponible
-        self.cantidadPrestada = 0
-        self.activo = _activo
-    
-    #Getter > Accesador
-    @property
-    def titulo(self):
-        return self._titulo
-    #Setter > Mutador
-    @titulo.setter
-    def titulo(self, _valorNuevo):
-        #P.O.O Seguro
-        if len(_valorNuevo) > 0:
-            self._titulo = _valorNuevo
-        else:
-            raise ValueError("El titulo no puede estar vacio.")
-
-    #metodo conocido como toString
+    def __init__(self): 
+            self.id = 1
+            self.titulo = "Sin Título" 
+            self.autor = "Sin Autor" 
+            self.cantidadDisponible = 0
+            self.cantidadPrestada = 0
+            self.activo = False
     def __str__(self): 
         return f"{self.titulo} por el autor {self.autor} Disponibles #{self.cantidadDisponible} / Prestados #{self.cantidadPrestada}"
+    @property
+    def id(self): #getter
+         return self._id
+    @id.setter
+    def id(self, _nuevo):
+        if _nuevo > 0:
+              self._id = _nuevo
+        else:
+             raise ValueError("El ID no puede ser cero o negativo.")
+    @property
+    def titulo(self):
+         return self._titulo
+    @titulo.setter
+    def titulo(self, _nuevo):
+        if len(_nuevo) > 0:
+            self._titulo = _nuevo
+        else:
+            raise ValueError("El TITULO no puede ser vacio.") 
 
 class Biblioteca: 
-    def __init__(self, _id): 
+    def __init__(self, _id): #self obligatorio
         self.id = _id 
         self.libros = [] 
-
     def agregar_libro(self, _libro): 
-        self.libros.append(_libro) 
+        self.libros.append(_libro) #el libro del parametro es agregado al arreglo de libros
         print(f"Libro Agregado en biblioteca {self.id} Exitosamente: {_libro}") 
-
 #app 
 biblioteca1 = Biblioteca(1) 
 biblioteca2 = Biblioteca(2) 
-#inicio a la antigua
-print("Ingrese un nuevo libro indicando: id, titulo, autor y cantidad disponible")
-libro1id = int(input("Ingrese Id: "))
-libro1titulo = input("Ingrese Titulo: ")
-libro1autor = input("Ingrese Autor: ")
-libro1disponibles = int(input("Ingrese cantidad de libros disponibles: "))
-libro1 = Libro(libro1id, libro1titulo, libro1autor, libro1disponibles, True)
-biblioteca1.agregar_libro(libro1)
-#fin a la antigua
-
 #inicio POO
-#con el accesador > Getter
-print(libro1.titulo)
-#con el mutador > Setter
-libro1.titulo = "Cien años de Soledad"
+print("POO Ingrese un nuevo libro indicando: id, titulo, autor y cantidad disponible")
+#instancia del objeto
+libro1 = Libro()
+libro1.id = int(input("Ingrese Id: "))
+libro1.titulo = input("Ingrese Titulo: ")
 print(libro1)
-#fin POO
-
-#codigo anterior al 21-03-2025
-#libro1: def __init__(self, id, titulo, autor, activo): 
-#libro1 = Libro(1, "El Quijote", "Miguel de Cervantes", True) 
-#libro2 = Libro(2, "Cien años de soledad", "GGM", True) 
-#biblioteca1.agregar_libro(libro1) 
-#biblioteca1.agregar_libro(libro2) 
-#biblioteca2.agregar_libro(libro2)
