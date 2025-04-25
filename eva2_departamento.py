@@ -20,9 +20,4 @@ class Departamento:
 
     #toString para mostrar
     def __str__(self):
-        return f"Departamento [id: {self._id}]\n[nombre: {self._nombre}]\n[gerente: {self._gerente}]"
-    
-
-#Implementacion APP
-depa1 = Departamento(1, "TI", "Seba Cabezas", True)
-print(depa1)
+        return f"[Departamento id: {self._id} - nombre: {self._nombre} - gerente: {self._gerente}]"
