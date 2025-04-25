@@ -48,11 +48,3 @@ class Empleado:
     #toString para mostrar
     def __str__(self):
         return f"Empleado [id: {self._id}]\n[nombre: {self._nombre}]\n[direccion: {self._direccion}]"
-
-#APP
-#empleado1 es una instancia de un objeto Empleado
-empleado1 = Empleado(111, "Sebastian", "Calle 1", 95618, "scabezas@inacap.cl", "08/06/1987", 1234, True)
-# print(empleado1) #va por el toString (__str__)
-# print(empleado1.getId())
-# empleado1.setId(123)
-# print(empleado1.getId())
