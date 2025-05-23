@@ -17,6 +17,10 @@
 # biblioteca
 import mysql.connector
 
+def mostrarDatos(_lista):
+    for reg in _lista:
+        print(reg)
+
 class IndicadorMonetario:
     # constructor con paramatros
     def __init__(self, _id = None, _nombre = None, _codigo = None, _valor = None, _activo = None):
@@ -34,7 +38,7 @@ class IndicadorMonetario:
             cursor = db_connection.cursor()
             query = "SELECT id, nombre, codigo, valor, activo FROM indicadores"
             cursor.execute(query)
-            resultSet = cursor.fetchAll()
+            resultSet = cursor.fetchall()
             cursor.close()
             # podemos trabajar con la lista, pq los resultados de la query estan en RS
             lista = []
@@ -51,6 +55,20 @@ class IndicadorMonetario:
         except mysql.connector.Error as err:
             print(f"Error en getAll: {err}")
             return []
+    def add(self, db_connection, _nuevo): #agregar
+        try:
+            nuevoId = len(self.getAll(db_connection)) + 1
+            cursor = db_connection.cursor()
+            query = f"INSERT INTO indicadores (id, nombre, codigo, valor, activo) VALUES ({nuevoId},'{_nuevo.nombre}', '{_nuevo.codigo}', {_nuevo.valor}, {_nuevo.activo})"
+            #print(query)
+            cursor.execute(query)
+            db_connection.commit()
+            #resultSet = cursor.fetchall()
+            cursor.close()
+            return True
+        except mysql.connector.Error as err:
+            print(f"Error en add: {err}")
+            return None
     
 class ConexionManager:
     def __init__(self, _host, _username, _password, _database):
@@ -68,22 +86,38 @@ class ConexionManager:
             )
             print(f"Se logro la conexion a la BD MySQL")
             return self.connection
-        except mysql.connector.Error as err:
+        #except mysql.connector.Error as err:
+        except Exception as err:
             print(f"Error en la conexion a la BD: {err}")
             return None
 
 # APP
 # nueva instancia del objeto
-indicador1 = IndicadorMonetario(1, 'Unidad de Fomento', 'UF', 39000, True)
-indicador2 = IndicadorMonetario(2, 'Unidad Tributaria Mensual', 'UTM', 60000, True)
-lista = []
-lista.append(indicador1)
-lista.append(indicador2)
+indicador = IndicadorMonetario()
+conexion = ConexionManager('localhost', 'root', 'admin', 'poo')
+conexion = conexion.conectarMySQL()
+listaIndicadores = indicador.getAll(conexion)
+# mostrarDatos(listaIndicadores)
+#agregar un nuevo valor
+indicador2 = IndicadorMonetario(0, 'Unidad Tributaria Mensual', 'UTM', 60000, True)
+if indicador.add(conexion, indicador2):
+    # listaIndicadores.append(indicador2) # no esta bien hacer esto
+    listaIndicadores = indicador.getAll(conexion)
+    print("Nuevo registro agregado exitosamente")
+mostrarDatos(listaIndicadores)
+
+
+# SIN BASE DE DATOS
+#indicador1 = IndicadorMonetario(1, 'Unidad de Fomento', 'UF', 39000, True)
+#indicador2 = IndicadorMonetario(2, 'Unidad Tributaria Mensual', 'UTM', 60000, True)
+#lista = []
+#lista.append(indicador1)
+#lista.append(indicador2)
 #print(indicador1)
 #print(indicador2)
 
-for indi in lista:
-    print(indi)
+#for indi in lista:
+#    print(indi)
 
 
 # Haga una lista de 3 indicadores
