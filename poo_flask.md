@@ -1,6 +1,10 @@
 # PYTHON CON FLASK EN POO
-Descargue vscode: https://code.visualstudio.com/download
-Descargue mysql workbench: [https://code.visualstudio.com/download](https://dev.mysql.com/downloads/workbench/)
+
+Herramientas
+
+* [Visual Studio Code](https://code.visualstudio.com/download)
+
+* [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
 ## 1. Crear una carpeta donde estará todo el proyecto.
 
