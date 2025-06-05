@@ -6,6 +6,20 @@ Herramientas
 
 * [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
+## 0. Credenciales MySQL en INACAP
+
+1. Ejecute XAMPP y haga click en start en mysql.
+2. Cree una nueva conexión en MySQL Workbench e Ingrese las siguientes credenciales:
+
+Usuario
+```
+root
+```
+Contraseña
+```
+admin
+```
+
 ## 1. Crear una carpeta donde estará todo el proyecto.
 
 ```bash
