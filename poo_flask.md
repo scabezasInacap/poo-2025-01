@@ -488,5 +488,5 @@ Abre tu terminal en la raíz de la carpeta mi_app_flask_poo/.
 Ejecuta el archivo app.py:
 
 ```bash
-python3 app.py
+En el archivo app.py hacer PLAY con el botón
 ```
