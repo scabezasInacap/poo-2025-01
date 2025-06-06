@@ -6,6 +6,8 @@ Herramientas
 
 * [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
 
+* [Video completo de la implementación del código en INACAP](https://inacapmailcl-my.sharepoint.com/:f:/g/personal/sebastian_cabezas07_inacapmail_cl/Eg-Ov-A-tbxHma-1AKweOfYBDD4tVdA41Dxnqv5IXC1tuA?e=PPcYvp)
+
 ## 0. Credenciales MySQL en INACAP
 
 1. Ejecute XAMPP y haga click en start en mysql.
